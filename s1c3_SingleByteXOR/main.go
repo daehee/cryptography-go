@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/hex"
 	"fmt"
+	"unicode"
 
 	"github.com/daehee/cryptography-go/utils"
 )
@@ -23,6 +24,23 @@ func findMax(ds []decoded) string {
 	return max.str
 }
 
+func scoreFrequency(s string) int {
+	// Frequent characters ETAOIN SHRDLU
+	// TODO Assign weights to scores to incorporate SHRDLU
+	fChars := []rune{'e', 't', 'a', 'o', 'i', 'n'}
+	var score int
+
+	for _, v := range s {
+		for _, r := range fChars {
+			if rune(v) == r || rune(v) == unicode.ToUpper(r) {
+				score++
+			}
+		}
+	}
+
+	return score
+}
+
 func main() {
 	data := "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"
 	b, _ := hex.DecodeString(data)
@@ -31,15 +49,9 @@ func main() {
 
 	for k := 0; k < 256; k++ {
 		ds[k].str = string(utils.XorByte(b, byte(k)))
-		// count number of spaces
-		for _, v := range ds[k].str {
-			if rune(v) == ' ' {
-				ds[k].count++
-			}
-		}
+		ds[k].count = scoreFrequency(ds[k].str)
 	}
 
 	res := findMax(ds)
 	fmt.Println(res)
-
 }
