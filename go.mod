@@ -1,3 +1,3 @@
-module github.com/daehee/cryptography-go
+module cryptography-go
 
 go 1.12
