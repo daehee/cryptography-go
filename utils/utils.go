@@ -11,6 +11,17 @@ type Decoded struct {
 	Key   byte
 }
 
+func XORWithKeys(s string, kl []rune) string {
+	out := []byte(s)
+	for i, char := range s {
+		// Iterate over each XOR key based on input string position
+		// Modulo: a modulo n is the remainder from the division of a by n
+		keyPos := i % len(kl)
+		out[i] = byte(char) ^ byte(kl[keyPos])
+	}
+	return string(out)
+}
+
 func FindMax(ds []Decoded) Decoded {
 	maxCount := ds[0].Count
 	maxString := ds[0].Str
