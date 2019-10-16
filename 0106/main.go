@@ -124,12 +124,17 @@ func breakRepeatXOR(ciphertext []byte, keySize int) []byte {
 }
 
 func main() {
+	// test wokka wokka
 	test()
 
 	dat, _ := ioutil.ReadFile("6.txt")
+	// decode from base64
 	ciphertext, _ := base64.StdEncoding.DecodeString(string(dat))
 
+	// guess key with the shortest possible edit distance
 	bestResult := getShort(ciphertext)
+	// break ciphertext into blocks based on guessed keysize
+	// and attack each byte with guessed XOR key
 	key := breakRepeatXOR(ciphertext, bestResult.keySize)
 	fmt.Printf("[*] Possible Key:\n%s\n", string(key))
 
