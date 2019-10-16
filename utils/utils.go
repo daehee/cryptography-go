@@ -11,13 +11,13 @@ type Decoded struct {
 	Key   byte
 }
 
-func XORWithKeys(s string, kl []rune) string {
-	out := []byte(s)
+func XORWithKeys(s, kl []byte) string {
+	out := s
 	for i, char := range s {
 		// Iterate over each XOR key based on input string position
 		// Modulo: a modulo n is the remainder from the division of a by n
 		keyPos := i % len(kl)
-		out[i] = byte(char) ^ byte(kl[keyPos])
+		out[i] = char ^ kl[keyPos]
 	}
 	return string(out)
 }
