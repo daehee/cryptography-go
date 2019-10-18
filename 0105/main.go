@@ -11,7 +11,7 @@ func main() {
 
 	// Loop through I, C, E as XOR key
 	xorKeys := []byte{'I', 'C', 'E'}
-	res := utils.XORWithKeys([]byte(data), xorKeys)
+	res := utils.XORBytes([]byte(data), xorKeys)
 
 	fmt.Println(hex.EncodeToString([]byte(res)))
 

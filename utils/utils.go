@@ -11,15 +11,15 @@ type Decoded struct {
 	Key   byte
 }
 
-func XORWithKeys(s, kl []byte) string {
-	out := s
-	for i, char := range s {
+func XORBytes(a, b []byte) []byte {
+	out := a
+	for i, char := range a {
 		// Iterate over each XOR key based on input string position
 		// Modulo: a modulo n is the remainder from the division of a by n
-		keyPos := i % len(kl)
-		out[i] = char ^ kl[keyPos]
+		keyPos := i % len(b)
+		out[i] = char ^ b[keyPos]
 	}
-	return string(out)
+	return out
 }
 
 func FindMax(ds []Decoded) Decoded {
