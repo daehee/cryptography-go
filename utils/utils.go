@@ -1,14 +1,51 @@
 package utils
 
 import (
+	"crypto/rand"
 	"encoding/base64"
 	"encoding/hex"
+	"fmt"
+	"log"
+	mRand "math/rand"
+	"time"
 )
 
 type Decoded struct {
 	Str   string
 	Count int
 	Key   byte
+}
+
+func RandBool() bool {
+	randByte := RandBytes(1)
+	return (randByte[0] % 2) == 0
+}
+
+func RandBytes(size int) []byte {
+	key := make([]byte, size)
+	_, err := rand.Read(key)
+	if err != nil {
+		log.Fatalf("Failed to generate %d random bytes: %s", size, err)
+	}
+	return key
+}
+
+func RandInt(min, max int) int {
+	mRand.Seed(time.Now().UnixNano())
+	return mRand.Intn(max-min+1) + min
+}
+
+func RandByteAppend(buffer []byte) []byte {
+	front := RandBytes(RandInt(5, 10))
+	back := RandBytes(RandInt(5, 10))
+	fmt.Printf("[*] Appending Front (%d): %v\n", len(front), front)
+	fmt.Printf("[*] Appending Back (%d): %v\n", len(back), back)
+
+	var res []byte
+	res = append(res, front...)
+	res = append(res, buffer...)
+	res = append(res, back...)
+	return res
 }
 
 func XORBytes(a, b []byte) []byte {

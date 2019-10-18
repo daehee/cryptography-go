@@ -2,17 +2,56 @@ package utils
 
 import (
 	"crypto/aes"
+	"encoding/hex"
+	"fmt"
 	"log"
 )
 
-func PadPKCS7(plaintext []byte, padByte []byte, blockLength int) []byte {
-	diff := blockLength - (len(plaintext) % blockLength)
+func CountRepeatChunks(ciphertext []byte, blockSize int) int {
+	repetitions := 0
+	chunks := buildChunks(ciphertext, blockSize)
+	unique := len(uniqueChunks(chunks))
+	repetitions += len(chunks) - unique
+	return repetitions
+}
+
+func uniqueChunks(chunks [][]byte) map[string]int {
+	// create map and use hexencoded bytes as key
+	dupes := make(map[string]int)
+	for _, chunk := range chunks {
+		h := hex.EncodeToString(chunk)
+		_, exist := dupes[h]
+		if exist {
+			dupes[h]++
+		} else {
+			dupes[h] = 1
+		}
+	}
+	return dupes
+}
+
+func buildChunks(ciphertext []byte, blockSize int) [][]byte {
+	var chunks [][]byte
+	for i := 0; i < len(ciphertext); i += blockSize {
+		chunk := ciphertext[i : i+blockSize]
+		chunks = append(chunks, chunk)
+	}
+	return chunks
+}
+
+func PadPKCS7(plaintext []byte, padByte []byte, blockSize int) []byte {
+	diff := blockSize - (len(plaintext) % blockSize)
 	padded := plaintext
 	for i := 0; i < diff; i++ {
 		padded = append(padded, padByte...)
 	}
 	return padded
 }
+
+// func PadTo(buffer []byte, blockSize int) int {
+// 	padSize := blockSize - (len(buffer) % blockSize)
+// 	return padSize
+// }
 
 func DecryptAES128ECB(buffer, key []byte) []byte {
 	c, err := aes.NewCipher(key)
@@ -22,10 +61,13 @@ func DecryptAES128ECB(buffer, key []byte) []byte {
 	if len(buffer) < aes.BlockSize {
 		log.Fatalf("Ciphertext block size is too short!")
 	}
+	if len(buffer)%aes.BlockSize != 0 {
+		panic("buffer should be a multiple of blocksize")
+	}
 
 	plaintext := make([]byte, len(buffer))
-	for bs, be := 0, aes.BlockSize; bs < len(buffer); bs, be = bs+aes.BlockSize, be+aes.BlockSize {
-		c.Decrypt(plaintext[bs:be], buffer[bs:be])
+	for i := 0; i < len(buffer); i += aes.BlockSize {
+		c.Decrypt(plaintext[i:i+aes.BlockSize], buffer[i:i+aes.BlockSize])
 	}
 	return plaintext
 }
@@ -38,10 +80,13 @@ func EncryptAES128ECB(buffer, key []byte) []byte {
 	if len(buffer) < aes.BlockSize {
 		log.Fatalf("Plaintext block size is too short!")
 	}
+	if len(buffer)%aes.BlockSize != 0 {
+		panic("buffer should be a multiple of blocksize")
+	}
 
 	ciphertext := make([]byte, len(buffer))
-	for bs, be := 0, aes.BlockSize; bs < len(buffer); bs, be = bs+aes.BlockSize, be+aes.BlockSize {
-		c.Encrypt(ciphertext[bs:be], buffer[bs:be])
+	for i := 0; i < len(buffer); i += aes.BlockSize {
+		c.Encrypt(ciphertext[i:i+aes.BlockSize], buffer[i:i+aes.BlockSize])
 	}
 	return ciphertext
 }
@@ -77,6 +122,27 @@ func EncryptAES128CBC(buffer, key, iv []byte) []byte {
 		// set previous block to encrypted block
 		prevBlock = encBlock
 		ciphertext = append(ciphertext, encBlock...)
+	}
+	return ciphertext
+}
+
+func EncOracle(buffer, key []byte) []byte {
+	appended := RandByteAppend(buffer)
+	appended = PadPKCS7(appended, []byte("\x00"), len(key))
+	var ciphertext []byte
+	if RandBool() {
+		// if true, encrypt by ECB
+		fmt.Println("[*] ECB Encrypting")
+		ciphertext = EncryptAES128ECB(appended, key)
+		// fmt.Println("[*] Test Decrypt:")
+		// fmt.Printf("%v", string(DecryptAES128ECB(ciphertext, key)))
+	} else {
+		// else encrypt by CBC
+		fmt.Println("[*] CBC Encrypting")
+		iv := RandBytes(16)
+		ciphertext = EncryptAES128CBC(appended, key, iv)
+		// fmt.Println("[*] Test Decrypt:")
+		// fmt.Printf("%v", string(DecryptAES128CBC(ciphertext, key, iv)))
 	}
 	return ciphertext
 }
