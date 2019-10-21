@@ -14,9 +14,8 @@ func main() {
 	key := utils.RandBytes(16)
 	ciphertext := utils.EncOracle([]byte(dat), key)
 	// Detect ECB mode!
-	repetitions := utils.CountRepeatChunks(ciphertext, len(key))
-	if repetitions > 0 {
-		fmt.Println("[*] Detected ECB mode repetition")
+	if utils.DetectECB(ciphertext, len(key)) {
+		fmt.Println("[!] Detected ECB mode repetition!")
 	} else {
 		fmt.Println("[!] Mode detection failed!")
 	}

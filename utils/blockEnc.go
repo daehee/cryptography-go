@@ -3,7 +3,6 @@ package utils
 import (
 	"crypto/aes"
 	"encoding/hex"
-	"fmt"
 	"log"
 )
 
@@ -126,23 +125,11 @@ func EncryptAES128CBC(buffer, key, iv []byte) []byte {
 	return ciphertext
 }
 
-func EncOracle(buffer, key []byte) []byte {
-	appended := RandByteAppend(buffer)
-	appended = PadPKCS7(appended, []byte("\x00"), len(key))
-	var ciphertext []byte
-	if RandBool() {
-		// if true, encrypt by ECB
-		fmt.Println("[*] ECB Encrypting")
-		ciphertext = EncryptAES128ECB(appended, key)
-		// fmt.Println("[*] Test Decrypt:")
-		// fmt.Printf("%v", string(DecryptAES128ECB(ciphertext, key)))
-	} else {
-		// else encrypt by CBC
-		fmt.Println("[*] CBC Encrypting")
-		iv := RandBytes(16)
-		ciphertext = EncryptAES128CBC(appended, key, iv)
-		// fmt.Println("[*] Test Decrypt:")
-		// fmt.Printf("%v", string(DecryptAES128CBC(ciphertext, key, iv)))
+func DetectECB(buffer []byte, blockSize int) bool {
+	repetitions := CountRepeatChunks(buffer, blockSize)
+	isECB := false
+	if repetitions > 0 {
+		isECB = true
 	}
-	return ciphertext
+	return isECB
 }
