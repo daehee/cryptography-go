@@ -16,6 +16,12 @@ type Decoded struct {
 	Key   byte
 }
 
+func fatal(err error) {
+	if err != nil {
+		log.Fatalln(err)
+	}
+}
+
 func RandBool() bool {
 	randByte := RandBytes(1)
 	return (randByte[0] % 2) == 0
