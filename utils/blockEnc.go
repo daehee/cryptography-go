@@ -8,7 +8,7 @@ import (
 
 func CountRepeatChunks(ciphertext []byte, blockSize int) int {
 	repetitions := 0
-	chunks := buildChunks(ciphertext, blockSize)
+	chunks := BuildChunks(ciphertext, blockSize)
 	unique := len(uniqueChunks(chunks))
 	repetitions += len(chunks) - unique
 	return repetitions
@@ -29,7 +29,7 @@ func uniqueChunks(chunks [][]byte) map[string]int {
 	return dupes
 }
 
-func buildChunks(ciphertext []byte, blockSize int) [][]byte {
+func BuildChunks(ciphertext []byte, blockSize int) [][]byte {
 	var chunks [][]byte
 	for i := 0; i < len(ciphertext); i += blockSize {
 		chunk := ciphertext[i : i+blockSize]
