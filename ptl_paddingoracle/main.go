@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	urlBase   = "http://ptl-8f8a2276-915d60d9.libcurl.so/"
+	urlBase   = "http://ptl-1cb77fbd-3470ab74.libcurl.so/"
 	authToken = "u7bvLewln6PJPSAbMb5pFfnCHSEd6olf"
 )
 
@@ -45,7 +45,7 @@ func encodeToken(buffer []byte) string {
 	return url.QueryEscape(encoded)
 }
 
-func callOracle(u, token string) (bool, error) {
+func callOracle(u, token string) bool {
 	req, err := http.NewRequest("GET", u, nil)
 	fatal(err)
 	req.AddCookie(&http.Cookie{Name: "auth", Value: token})
@@ -58,14 +58,14 @@ func callOracle(u, token string) (bool, error) {
 	if resp.StatusCode != 200 {
 		err = errors.New(u +
 			"\nresp.StatusCode: " + strconv.Itoa(resp.StatusCode))
-		return false, err
+		return false
 	}
 
 	body, _ := ioutil.ReadAll(resp.Body)
 	if isValidPad(string(body)) {
-		return true, nil
+		return true
 	}
-	return false, nil
+	return false
 }
 
 func isValidPad(body string) bool {
