@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/daehee/cryptography-go/utils"
+	"cryptography-go/utils"
 )
 
 func main() {
@@ -11,4 +11,3 @@ func main() {
 	result := utils.HexToBase64(data)
 	fmt.Println(result)
 }
-

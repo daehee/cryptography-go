@@ -1,8 +1,8 @@
 package main
 
 import (
-    "fmt"
-    "github.com/daehee/cryptography-go/utils"
+	"cryptography-go/utils"
+	"fmt"
 )
 
 func main() {
@@ -13,4 +13,3 @@ func main() {
 
 	fmt.Println(result)
 }
-
