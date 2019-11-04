@@ -1,0 +1,238 @@
+
+** Starting Chunk 1 of 9 **
+
+[+] Success: (52/256) [Byte 15]
+[+] Success: (175/256) [Byte 14]
+[+] Success: (253/256) [Byte 13]
+[+] Success: (137/256) [Byte 12]
+[+] Success: (83/256) [Byte 11]
+[+] Success: (241/256) [Byte 10]
+[+] Success: (132/256) [Byte 9]
+[+] Success: (70/256) [Byte 8]
+[+] Success: (31/256) [Byte 7]
+[+] Success: (224/256) [Byte 6]
+[+] Success: (162/256) [Byte 5]
+[+] Success: (58/256) [Byte 4]
+[+] Success: (160/256) [Byte 3]
+[+] Success: (94/256) [Byte 2]
+[+] Success: (155/256) [Byte 1]
+[+] Success: (69/256) [Byte 0]
+
+
+Chunk 1 Results:
+[+] Ciphertext [HEX]: 2eb636c157cec82c6ea1a910c1bfea6b
+[+] Intermediate Bytes [HEX]: 559450ad36a9ea164e83f7568dfead35
+[+] Plaintext: {"flag": "^FLAG^
+
+
+** Starting Chunk 2 of 9 **
+
+[+] Success: (139/256) [Byte 15]
+[+] Success: (88/256) [Byte 14]
+[+] Success: (45/256) [Byte 13]
+[+] Success: (244/256) [Byte 12]
+[+] Success: (237/256) [Byte 11]
+[+] Success: (127/256) [Byte 10]
+[+] Success: (33/256) [Byte 9]
+[+] Success: (141/256) [Byte 8]
+[+] Success: (21/256) [Byte 7]
+[+] Success: (74/256) [Byte 6]
+[+] Success: (84/256) [Byte 5]
+[+] Success: (85/256) [Byte 4]
+[+] Success: (16/256) [Byte 3]
+[+] Success: (242/256) [Byte 2]
+[+] Success: (177/256) [Byte 1]
+[+] Success: (232/256) [Byte 0]
+
+
+Chunk 2 Results:
+[+] Ciphertext [HEX]: cc8b9a2a6b672379e3474bd1c41b6bbf
+[+] Intermediate Bytes [HEX]: f8befc1d595f401c852679e8f02e5a8a
+[+] Plaintext: 45f728cefa294515
+
+
+** Starting Chunk 3 of 9 **
+
+[+] Success: (183/256) [Byte 15]
+[+] Success: (205/256) [Byte 14]
+[+] Success: (59/256) [Byte 13]
+[+] Success: (179/256) [Byte 12]
+[+] Success: (206/256) [Byte 11]
+[+] Success: (101/256) [Byte 10]
+[+] Success: (69/256) [Byte 9]
+[+] Success: (191/256) [Byte 8]
+[+] Success: (114/256) [Byte 7]
+[+] Success: (206/256) [Byte 6]
+[+] Success: (55/256) [Byte 5]
+[+] Success: (113/256) [Byte 4]
+[+] Success: (42/256) [Byte 3]
+[+] Success: (202/256) [Byte 2]
+[+] Success: (132/256) [Byte 1]
+[+] Success: (30/256) [Byte 0]
+
+
+Chunk 3 Results:
+[+] Ciphertext [HEX]: 3dbea7151c5ff14ad62452ffd40cfdd0
+[+] Intermediate Bytes [HEX]: 0e8bc4277d3cc47bb74263cbb738cfb6
+[+] Plaintext: 35c2ac51af14c42f
+
+
+** Starting Chunk 4 of 9 **
+
+[+] Success: (127/256) [Byte 15]
+[+] Success: (110/256) [Byte 14]
+[+] Success: (167/256) [Byte 13]
+[+] Success: (90/256) [Byte 12]
+[+] Success: (204/256) [Byte 11]
+[+] Success: (145/256) [Byte 10]
+[+] Success: (156/256) [Byte 9]
+[+] Success: (167/256) [Byte 8]
+[+] Success: (211/256) [Byte 7]
+[+] Success: (106/256) [Byte 6]
+[+] Success: (183/256) [Byte 5]
+[+] Success: (188/256) [Byte 4]
+[+] Success: (208/256) [Byte 3]
+[+] Success: (45/256) [Byte 2]
+[+] Success: (90/256) [Byte 1]
+[+] Success: (4/256) [Byte 0]
+
+
+Chunk 4 Results:
+[+] Ciphertext [HEX]: 236513b9838853ea9aaea1fa68965f4a
+[+] Intermediate Bytes [HEX]: 145523ddb0bc60daaf9b97c95ea46c7e
+[+] Plaintext: 700d343055636234
+
+
+** Starting Chunk 5 of 9 **
+
+[+] Success: (118/256) [Byte 15]
+[+] Success: (177/256) [Byte 14]
+[+] Success: (167/256) [Byte 13]
+[+] Success: (33/256) [Byte 12]
+[+] Success: (83/256) [Byte 11]
+[+] Success: (150/256) [Byte 10]
+[+] Success: (74/256) [Byte 9]
+[+] Success: (190/256) [Byte 8]
+[+] Success: (74/256) [Byte 7]
+[+] Success: (8/256) [Byte 6]
+[+] Success: (121/256) [Byte 5]
+[+] Success: (91/256) [Byte 4]
+[+] Success: (106/256) [Byte 3]
+[+] Success: (33/256) [Byte 2]
+[+] Success: (118/256) [Byte 1]
+[+] Success: (129/256) [Byte 0]
+
+
+Chunk 5 Results:
+[+] Ciphertext [HEX]: f44b170367173220d22fa36447c1d212
+[+] Intermediate Bytes [HEX]: 91792f6757720243b64d905625a4b377
+[+] Plaintext: e28d0e0cdb32beae
+
+
+** Starting Chunk 6 of 9 **
+
+[+] Success: (229/256) [Byte 15]
+[+] Success: (129/256) [Byte 14]
+[+] Success: (31/256) [Byte 13]
+[+] Success: (19/256) [Byte 12]
+[+] Success: (13/256) [Byte 11]
+[+] Success: (20/256) [Byte 10]
+[+] Success: (102/256) [Byte 9]
+[+] Success: (187/256) [Byte 8]
+[+] Success: (142/256) [Byte 7]
+[+] Success: (215/256) [Byte 6]
+[+] Success: (173/256) [Byte 5]
+[+] Success: (198/256) [Byte 4]
+[+] Success: (104/256) [Byte 3]
+[+] Success: (60/256) [Byte 2]
+[+] Success: (59/256) [Byte 1]
+[+] Success: (135/256) [Byte 0]
+
+
+Chunk 6 Results:
+[+] Ciphertext [HEX]: b3727e248d82ffab93437b6c3526a3c6
+[+] Intermediate Bytes [HEX]: 97343265caa6dd87b3611208171c83e4
+[+] Plaintext: $FLAG$", "id": "
+
+
+** Starting Chunk 7 of 9 **
+
+[+] Success: (14/256) [Byte 15]
+[+] Success: (45/256) [Byte 14]
+[+] Success: (207/256) [Byte 13]
+[+] Success: (89/256) [Byte 12]
+[+] Success: (217/256) [Byte 11]
+[+] Success: (176/256) [Byte 10]
+[+] Success: (191/256) [Byte 9]
+[+] Success: (144/256) [Byte 8]
+[+] Success: (13/256) [Byte 7]
+[+] Success: (200/256) [Byte 6]
+[+] Success: (102/256) [Byte 5]
+[+] Success: (238/256) [Byte 4]
+[+] Success: (225/256) [Byte 3]
+[+] Success: (228/256) [Byte 2]
+[+] Success: (16/256) [Byte 1]
+[+] Success: (34/256) [Byte 0]
+
+
+Chunk 7 Results:
+[+] Ciphertext [HEX]: 003dc6ccc006a77dba8296fe099c696a
+[+] Intermediate Bytes [HEX]: 321feaece26dc20498b8b6dc5dcc2f0f
+[+] Plaintext: 2", "key": "TPFe
+
+
+** Starting Chunk 8 of 9 **
+
+[+] Success: (250/256) [Byte 15]
+[+] Success: (134/256) [Byte 14]
+[+] Success: (255/256) [Byte 13]
+[+] Success: (150/256) [Byte 12]
+[+] Success: (229/256) [Byte 11]
+[+] Success: (129/256) [Byte 10]
+[+] Success: (237/256) [Byte 9]
+[+] Success: (61/256) [Byte 8]
+[+] Success: (59/256) [Byte 7]
+[+] Success: (216/256) [Byte 6]
+[+] Success: (25/256) [Byte 5]
+[+] Success: (130/256) [Byte 4]
+[+] Success: (81/256) [Byte 3]
+[+] Success: (50/256) [Byte 2]
+[+] Success: (89/256) [Byte 1]
+[+] Success: (100/256) [Byte 0]
+
+
+Chunk 8 Results:
+[+] Ciphertext [HEX]: 03187217ec44ff005cdcebd8a4a5f4c9
+[+] Intermediate Bytes [HEX]: 74563c5c8e12d23235ea87e092fc84fb
+[+] Plaintext: wNNKbV-2i6l86Yp2
+
+
+** Starting Chunk 9 of 9 **
+
+[+] Success: (218/256) [Byte 15]
+[+] Success: (34/256) [Byte 14]
+[+] Success: (30/256) [Byte 13]
+[+] Success: (74/256) [Byte 12]
+[+] Success: (237/256) [Byte 11]
+[+] Success: (149/256) [Byte 10]
+[+] Success: (171/256) [Byte 9]
+[+] Success: (232/256) [Byte 8]
+[+] Success: (140/256) [Byte 7]
+[+] Success: (70/256) [Byte 6]
+[+] Success: (183/256) [Byte 5]
+[+] Success: (23/256) [Byte 4]
+[+] Success: (70/256) [Byte 3]
+[+] Success: (235/256) [Byte 2]
+[+] Success: (7/256) [Byte 1]
+[+] Success: (3/256) [Byte 0]
+
+
+Chunk 9 Results:
+[+] Ciphertext [HEX]: 417f9b3539c1468feaa699e244172ad1
+[+] Intermediate Bytes [HEX]: 1308e54b1bbc4c85e0ac93e84e1d20db
+[+] Plaintext: Rw~~"}
+
+** Finished **
+
+
+[+] Decrypted value (ASCII): {"flag": "^FLAG^45f728cefa29451535c2ac51af14c42f700d343055636234e28d0e0cdb32beae$FLAG$", "id": "2", "key": "TPFewNNKbV-2i6l86Yp2Rw~~"}
