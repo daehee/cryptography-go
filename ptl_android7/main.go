@@ -36,6 +36,7 @@ func main() {
 	// Hack: detect using regex of PentesterLab's flag format
 	rFlag := regexp.MustCompile(`\w{8}-\w{4}-\w{4}-\w{4}-\w{12}`)
 	// Iterate over every possible combination of \d\d\d\d as MD5 hash
+	// TODO display numbers < 1000 as 4 digits
 	for i := 0; i < 10000; i++ {
 		num := strconv.Itoa(i)
 		key := md5.Sum([]byte(num))
